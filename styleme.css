@@ -1,0 +1,27 @@
+body {
+    background-color: transparent;
+}
+
+h1,
+h3 {
+    color: green;
+    color: green;
+}
+
+.image-row {
+    display: flex;
+}
+
+.image-col {
+    padding: 10px;
+}
+
+.image-row img {
+    height: 25vw;
+    height: 25vw;
+}
+
+.strong-word {
+    font-family: 'Courier New', Courier, monospace;
+    color: Plywood;
+}
