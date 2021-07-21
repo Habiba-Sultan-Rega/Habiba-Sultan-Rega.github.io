@@ -1,7 +1,14 @@
 body {
     background-color: transparent;
 }
+.strong-word{
+font-weight: bold;
+font-type: normal;
+}
 
+a{
+    color:green;
+}
 h1,
 h3 {
     color: green;
