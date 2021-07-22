@@ -9,6 +9,10 @@ body{
     background-image: url("Images/bannerbg.png");
     text-align:center;
 }
+.links {
+    list-style-type: none;
+    padding-left: 0px;
+}
 .heading {
     font-family: Tahoma,Verdana, sans-serif;
     text-align: center;
@@ -27,57 +31,79 @@ h1.heading {
         position: relative;
         overflow: hidden;
 }
+
 #rating {
-    background-image: url(Images/rbg.png);
-    font-size: 48pt;
-    font-weight: bold;
-    color: red;
-    height: 83px;
+        background-image: url(Images/rbg.png);
+        font-weight: bold;
+        font-size: 48pt;
+        color: red;
+        display: flex;
+        align-items: center;
 }
-.general-overview {
+.side-bar {
     background-color: #A2B964;
     width: 250px;
+    font-size: 8pt;
     font-family: Arial, sans-serif;
-    padding-bottom: 2px;
     position: absolute;
-    left: 550px;
-    height: 1005px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
 }
 
-.general-overview dl {
-    padding-left: 10pt;
-    padding-right: 10pt;
-    margin-bottom: 0;
-}
-
-.general-overview dt {
+.side-bar dt {
     font-weight: bold;
     padding-top: 10pt;
     padding-left: 5pt;
 }
 
-
-.left-col,.right-col {
-    column-count: 2;
-    padding: 10px;
-    height: 1000px;
-}
-.critics-container {
-    position: relative;
-    padding: 5px;
+.sections {
     width: 550px;
 }
-.critics-reviews
-{
-        font-weight: bold;
-        font-size: 8pt;
-        background-color: #E8DC9B;
-        border: 2px solid gray;
-        border-radius: 10px;
-        padding: 8px;
-        overflow: hidden;
+
+.critic {
+    padding: 10px;
 }
-.author {
- float: left;
- margin-bottom: 20pt
+
+#row {
+    column-count: 2;
+    padding: 10px;
 }
+
+#row .review-col-2 {
+    height: 1000px;
+}
+#row .review-col-1 {
+    height: 1000px;
+}
+.review {
+    font-size: 8pt;
+    font-weight: bold;
+    padding: 8px;
+    overflow: hidden;
+    background-color: #E8DC9B;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+
+.comment img {
+    float: left;
+    margin-right: 5px;
+}
+
+.authors img {
+    float: left;
+}
+
+.footer {
+    background-color: #A2B964;
+    text-align: center;
+    padding: 5px;
+    margin: 0px;
+}
+
+.validator {
+    position: absolute;
+    right: 0;
+    top: 1105;
+    }
