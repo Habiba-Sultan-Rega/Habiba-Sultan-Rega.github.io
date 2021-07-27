@@ -23,7 +23,7 @@ const sum = function(arr){
 }
 //console.log(sum([1,2,3,4]));
 
-/* returns the sum of array elements */
+/* returns the multiplicity of array elements */
 const multiply = function(arr){
     return arr.reduce(function (acc,elements){
            return acc * elements });
