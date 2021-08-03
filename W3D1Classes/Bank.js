@@ -10,7 +10,7 @@ class Bank{
         }
     addSavingsAccount(interest) {
             this.accounts.push(new SavingsAccount(Bank.accountNumber++, interest));
-              //return this.accounts.length;
+              return this.accounts.length;
           }
     addCheckingAccount(overdraft) {
            this.accounts.push(new CheckingAccount(Bank.accountNumber++, overdraft));
