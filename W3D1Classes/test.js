@@ -35,9 +35,9 @@ describe("Wthdraw", function() {
 
 describe("getInterest", function() {
     it("returns the interest of a saving account", function() {
-        let saving_account = new SavingsAccount(123);
-        saving_account.setInterest(10);
-        assert.equal(saving_account.getInterest(), 10);
+        let acct = new SavingsAccount(123);
+        acct.setInterest(10);
+        assert.equal(acct.getInterest(), 10);
     });
 });
 
@@ -50,28 +50,28 @@ describe("toString", function() {
 
 describe("adding Interest", function() {
     it("returns the interest of a saving account", function() {
-        let saving_account = new SavingsAccount(123, 10);
-        saving_account.deposit(100);
-        saving_account.addInterest();
-        assert.equal(saving_account.getBalance(), 110);
+        let sacct = new SavingsAccount(123, 10);
+        sacct.deposit(100);
+        sacct.addInterest();
+        assert.equal(sacct.getBalance(), 110);
     });
 });
 
 describe("Withdrawing", function() {
     it("withdraw money from a checking account", function() {
-        let checking_account = new CheckingAccount(1, 100);
-        checking_account.deposit(100);
-        checking_account.withdraw(50);
-        assert.equal(checking_account.getBalance(), 50);
+        let sacct = new CheckingAccount(1, 100);
+        sacct.deposit(100);
+        sacct.withdraw(50);
+        assert.equal(sacct.getBalance(), 50);
     });
 });
 
 describe("Withdrawing accounts", function() {
     it("withdraw money from a checking account below balance", function() {
-        let checking_account = new CheckingAccount(1, 100);
-        checking_account.deposit(100);
-        checking_account.withdraw(150);
-        assert.equal(checking_account.getBalance(), -50);
+        let sacct = new CheckingAccount(1, 100);
+        sacct.deposit(100);
+        sacct.withdraw(150);
+        assert.equal(sacct.getBalance(), -50);
         assert.throws(function() { withdraw(100) }, Error);
 
     });
