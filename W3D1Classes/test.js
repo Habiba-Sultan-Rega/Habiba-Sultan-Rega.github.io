@@ -101,7 +101,6 @@ describe("Add Saving Account", function() {
         let bank = new Bank();
         assert.equal(bank.addSavingsAccount(100));
         assert.equal(bank.addSavingsAccount(200));
-         assert.equal(bank.accounts.length, 2);
     })
 });
 
@@ -132,7 +131,7 @@ describe("Accounts Report", function() {
     it("Returns a String with each account on its own line", function() {
         let bank = new Bank();
         bank.addAccount();
-        assert.equal(bank.accountReport(), 'Account 10: balance 0\n');
+        assert.equal(bank.accountReport(), 'Account 9: balance 0\n');
     })
 });
 
