@@ -1,107 +1,104 @@
-describe("Create Account", function() {
+describe("getNumber", function() {
     it("gets account number of account", function() {
-        let accounts = new Account(1);
-        assert.equal(accounts.getNumber(), 1);
+        let acc = new Account(123);
+        assert.equal(acc.getNumber(), 123);
     })
 });
 
-describe("Deposit", function() {
-    it("Deposit money and update balance of an account", function() {
-        let accounts = new Account(1);
-        accounts.deposit(200);
-        accounts.deposit(150);
-        assert.equal(accounts.getBalance(), 350);
-        assert.throws(() => accounts.deposit(-1), Error);
+describe("toString", function() {
+    it("string representation of an account", function() {
+        let acc = new Account(123);
+        assert.equal(acc.toString(), "Account " + acc.getNumber() + ": balance " + acc.getBalance());
     })
 });
 
-
-describe("Withdraw", function() {
-    it("Withdraw money and update balance of an account", function() {
-        let accounts = new Account(123);
-        accounts.deposit(200);
-        accounts.deposit(150);
-        accounts.withdraw(100);
-        assert.equal(accounts.getBalance(), 250);
-        assert.throws(function() { accounts.withdraw(350) }, Error);
+describe("deposit", function() {
+    it("deposits money and update balance from account", function() {
+        let acc = new Account(123);
+        acc.deposit(100);
+        acc.deposit(100);
+        assert.equal(acc.getBalance(), 200);
+        assert.throws(() => acc.deposit(-1), Error);
     })
+});
+
+describe("withdraw", function() {
+    it("withdraw money and update balance from account", function() {
+        let acc = new Account(123);
+        acc.deposit(100);
+        acc.deposit(100);
+        acc.withdraw(50);
+        assert.equal(acc.getBalance(), 150);
+        assert.throws(function() { acc.withdraw(200) }, Error);
+    })
+});
+
+describe("getInterest", function() {
+    it("returns the interest of a saving account", function() {
+        let sa = new SavingsAccount(123);
+        sa.setInterest(10);
+        assert.equal(sa.getInterest(), 10);
+    });
 });
 
 describe("toString", function() {
     it("string representation of a Saving account", function() {
-        let accounts = new SavingsAccount(1, 0.75);
-        assert.equal(accounts.toString(), "Savings Account " + accounts.getNumber() + ": balance " + accounts.getBalance() + `: interest ${accounts.getInterest()}`);
+        let acc = new SavingsAccount(123, 10);
+        assert.equal(acc.toString(), "Account " + acc.getNumber() + ": balance " + acc.getBalance() + `interest: ${acc.getInterest()}`);
     })
 });
-describe("Get Interest", function() {
+
+describe("addInterest", function() {
     it("returns the interest of a saving account", function() {
-        let saving_account = new SavingsAccount(1);
-        saving_account.setInterest(0.75);
-        assert.equal(saving_account.getInterest(), 0.75);
-    });
-});
-describe("toString", function() {
-    it("string representation of an account", function() {
-        let accounts = new Account(01);
-        assert.equal(accounts.toString(), "Account " + accounts.getNumber() + ": balance " + accounts.getBalance());
-    })
-});
-
-describe("Adding Interest", function() {
-    it("Displays the interest of a Saving Accounts", function() {
-        let saving_account = new SavingsAccount(1, 15);
-        saving_account.deposit(250);
-        saving_account.addInterest();
-        assert.equal(saving_account.getBalance(), 287.5);
+        let sa = new SavingsAccount(123, 10);
+        sa.deposit(100);
+        sa.addInterest();
+        assert.equal(sa.getBalance(), 110);
     });
 });
 
-describe("Withdrawing Money", function() {
-    it("Withdraws Money from a Checking Account", function() {
-        let checking_accounts = new CheckingAccount(1, 250);
-        checking_accounts.deposit(250);
-        checking_accounts.withdraw(50);
-        assert.equal(checking_accounts.getBalance(), 200);
+describe("withdraw", function() {
+    it("withdraw money from a checking account", function() {
+        let ca = new CheckingAccount(123, 100);
+        ca.deposit(100);
+        ca.withdraw(50);
+        assert.equal(ca.getBalance(), 50);
     });
 });
 
-describe("Withdrawing Money Below Balance", function() {
+describe("withdraw", function() {
     it("withdraw money from a checking account below balance", function() {
-        let checking_accounts = new CheckingAccount(1, 200);
-        checking_accounts.deposit(200);
-        checking_accounts.withdraw(250);
-        assert.equal(checking_accounts.getBalance(), -50);
-        assert.throws(function() { withdraw(200) }, Error);
+        let ca = new CheckingAccount(123, 100);
+        ca.deposit(100);
+        ca.withdraw(150);
+        assert.equal(ca.getBalance(), -50);
+        assert.throws(function() { withdraw(100) }, Error);
 
     });
 });
 
 describe("toString", function() {
-    it("String representation of a Checking Account", function() {
-        let accounts = new CheckingAccount(2, 200);
-        assert.equal(accounts.toString(), "Account " + accounts.getNumber() + ": balance " + accounts.getBalance() + `overdraft: ${accounts.getOverdraft()}`);
+    it("string representation of a Checking account", function() {
+        let acc = new CheckingAccount(123, 100);
+        assert.equal(acc.toString(), "Account " + acc.getNumber() + ": balance " + acc.getBalance() + `overdraft: ${acc.getOverdraft()}`);
     })
 });
 
-
-/****************************** Bank ********************************/
-
-describe("Adding Account", function() {
-    it("Creates account to bank and return count of accounts", function() {
+describe("addAccount", function() {
+    it("adds account to bank and return count of accounts", function() {
         let bank = new Bank();
         assert.equal(bank.addAccount(), 1);
         assert.equal(bank.addAccount(), 2);
-        assert.equal(bank.accounts.length, 2);
+
     })
 });
 
-
-describe("Add Saving Account", function() {
+describe("addSavingAccount", function() {
     it("adds saving account to bank and return count of accounts", function() {
         let bank = new Bank();
-        assert.equal(bank.addSavingsAccount(100));
-        assert.equal(bank.addSavingsAccount(200));
-         assert.equal(bank.accounts.length, 2);
+        assert.equal(bank.addSavingsAccount(10), 1);
+        assert.equal(bank.addSavingsAccount(10), 2);
+
     })
 });
 
@@ -110,52 +107,56 @@ describe("addCheckingAccount", function() {
         let bank = new Bank();
         assert.equal(bank.addCheckingAccount(10), 1);
         assert.equal(bank.addCheckingAccount(10), 2);
-         assert.equal(bank.accounts.length, 2);
 
     })
 });
 
-describe("Close Account", function() {
-    it("Remove an account from array", function() {
+describe("closeAccount", function() {
+    it("removed an account from list", function() {
         let bank = new Bank();
-        bank.addCheckingAccount(100);
-        bank.addCheckingAccount(200);
-        bank.addCheckingAccount(300);
+        bank.addCheckingAccount(10);
+        bank.addCheckingAccount(10);
         bank.closeAccount(bank.accounts[0].getNumber());
-        assert.equal(bank.accounts.length, 2);
-        bank.closeAccount(bank.accounts[0].getNumber());
+
         assert.equal(bank.accounts.length, 1);
+        bank.closeAccount(10);
+
+        assert.equal(bank.accounts.length, 1);
+        bank.closeAccount(bank.accounts[0].getNumber());
+        assert.equal(bank.accounts.length, 0);
     })
 });
 
-describe("Accounts Report", function() {
-    it("Returns a String with each account on its own line", function() {
+describe("accountReport", function() {
+    it("returns a String with each account on its own line", function() {
         let bank = new Bank();
         bank.addAccount();
-        assert.equal(bank.accountReport(), 'Account 10: balance 0\n');
+        assert.equal(bank.accountReport(), 'Account 1: balance 0\n');
+
     })
 });
 
-describe("End of Month", function() {
-    it("Return empty endOfMonth report for account", function() {
-        let accounts = new Account(15);
-        assert.equal(accounts.endOfMonth(), '');
+
+describe("endOfMonth", function() {
+    it("return empty endOfMonth report for account", function() {
+        let acc = new Account(10);
+        assert.equal(acc.endOfMonth(), '');
     })
 });
 
-describe("End of Month", function() {
-    it("Return formatted endOfMonth report for saving account", function() {
-        let accounts = new SavingsAccount(1, 15);
-        accounts.deposit(250);
-        assert.equal(accounts.endOfMonth(), 'Interest added SavingsAccount 1: balance: 287.5 interest: 37.5');
+describe("endOfMonth", function() {
+    it("return formatted endOfMonth report for saving account", function() {
+        let acc = new SavingsAccount(1, 10);
+        acc.deposit(100);
+        assert.equal(acc.endOfMonth(), 'Interest added SavingsAccount 1: balance: 110 interest: 10');
     })
 });
 
-describe("End of Month", function() {
-    it("Return formatted endOfMonth report for checking account", function() {
-        let accounts = new CheckingAccount(1, 100);
-        accounts.deposit(50);
-        accounts.withdraw(100);
-        assert.equal(accounts.endOfMonth(), 'Warning, low balance CheckingAccount 1: balance: -50 overdraft limit: 100');
+describe("endOfMonth", function() {
+    it("return formatted endOfMonth report for checking account", function() {
+        let acc = new CheckingAccount(1, 100);
+        acc.deposit(50);
+        acc.withdraw(100);
+        assert.equal(acc.endOfMonth(), 'Warning, low balance CheckingAccount 1: balance: -50 overdraft limit: 100');
     })
 });
