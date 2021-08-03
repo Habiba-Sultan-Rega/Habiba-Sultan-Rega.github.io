@@ -132,7 +132,7 @@ describe("Accounts Report", function() {
     it("Returns a String with each account on its own line", function() {
         let bank = new Bank();
         bank.addAccount();
-        assert.equal(bank.accountReport(), 'Account 10: balance 0\n');
+        assert.equal(bank.accountReport(), 'Account 9: balance 0\n');
     })
 });
 
