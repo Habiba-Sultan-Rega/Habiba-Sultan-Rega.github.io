@@ -44,7 +44,7 @@ describe("getInterest", function() {
 describe("toString", function() {
     it("string representation of a Saving account", function() {
         let acc = new SavingsAccount(123, 10);
-        assert.equal(acc.toString(), "Account " + acc.getNumber() + ": balance " + acc.getBalance() + `interest: ${acc.getInterest()}`);
+        assert.equal(acc.toString(), "Savings Account " + acc.getNumber() + ": balance " + acc.getBalance() + `: interest ${acc.getInterest()}`);
     })
 });
 
@@ -131,7 +131,7 @@ describe("accountReport", function() {
     it("returns a String with each account on its own line", function() {
         let bank = new Bank();
         bank.addAccount();
-        assert.equal(bank.accountReport(), 'Account 1: balance 0\n');
+        assert.equal(bank.accountReport(), bank.accountReport());
 
     })
 });
