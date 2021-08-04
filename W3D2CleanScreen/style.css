@@ -1,0 +1,26 @@
+
+
+#container {
+    margin-top: 300px;
+    margin-left: 18px;
+    position: absolute;
+}
+
+#circles {
+    height: 200px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+div{
+    content-align: left;
+}
+.content{
+    top:80px;
+    content-align:center;
+}
+.circle {
+    position: absolute;
+    top: 50%;
+}
