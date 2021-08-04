@@ -17,7 +17,8 @@ div{
     content-align: left;
 }
 .content{
-    top:80px;
+    bottom:0px;
+    float:left;
     content-align:center;
 }
 .circle {
