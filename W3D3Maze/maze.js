@@ -18,7 +18,7 @@ $(function () {
                                $("#end").animate({ left:540+'px'});
                                $(".boundary").css("background-color", "green");
                                $("#status").text("You win !!!  :D :D")
-                               .css({"color":"red","font-size":"30px"});
+                               .css({"color":"red"});
                                }, 1900);
             });
 
