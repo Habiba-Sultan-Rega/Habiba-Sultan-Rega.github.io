@@ -17,7 +17,7 @@ $(function () {
                  setTimeout(function() {
                                $("#end").animate({ left:540+'px'});
                                $(".boundary").css("background-color", "green");
-                               $("#status").text("Hooray You win !!!  :D :D")
+                               $("#status").text("Hooray you won !!!  :D :D")
                                .css({"color":"red"});
                                }, 1900);
             });
