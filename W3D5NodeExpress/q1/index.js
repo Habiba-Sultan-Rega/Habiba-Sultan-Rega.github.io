@@ -4,7 +4,6 @@ const app = express();
 app.get('/', function(req, res, next) {
     let name = req.query.name;
     let age = req.query.age;
-
     if (!name) {
         name = "person";
     }

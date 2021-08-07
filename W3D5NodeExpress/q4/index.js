@@ -31,7 +31,6 @@ app.get('/', (req, res) => {
 app.post('/result', function(req, res, next) {
     let name = req.body.name;
     let age = req.body.age;
-
     if (!name) {
         name = 'person';
     }

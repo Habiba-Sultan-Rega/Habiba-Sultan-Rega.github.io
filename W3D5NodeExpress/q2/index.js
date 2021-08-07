@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
-
 app.use(express.urlencoded());
-
 app.get('/', (req, res) => {
     res.send('<form action="/result" method="POST"> '+
         '<label for="name">Name</label> '+
@@ -16,7 +14,6 @@ app.get('/', (req, res) => {
 app.post('/result', function(req, res, next) {
     let name = req.body.name;
     let age = req.body.age;
-
     if (!name) {
         name = 'person';
     }
