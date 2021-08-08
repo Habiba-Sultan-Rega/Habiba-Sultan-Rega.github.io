@@ -1,0 +1,28 @@
+<%- include('layout/header.ejs')%>
+    <link href="/css/product.css" rel="stylesheet" />
+    <title>Product List</title>
+    </head>
+
+    <body>
+
+        <form method="POST" action="/addToCart">
+            <input type="hidden" name="id" value=< %=product.id%> />
+            <div id="container">
+                <div>
+                       <label>Name:</label>
+                       <%=product.name%>
+                </div>
+                <div>
+                     <label>Description:</label>
+                         <%=product.description%>
+                </div>
+                <div>
+                       <label>Price:</label>
+                             <%=product.price%>
+                </div>
+                <span>
+                     <input type="submit" value="Add to cart" />
+                </span>
+            </div>
+        </form>
+        <%- include('layout/footer.ejs')%>

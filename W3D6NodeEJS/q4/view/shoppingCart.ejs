@@ -1,0 +1,19 @@
+<%- include('layout/header') %>
+    <link href="/css/shoppingcart.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div id="list-container">
+
+            <% for(const product of products){%>
+                <div id="container">
+                    <label>Name:</label>
+                    <span><%=product.name%></span>
+                    <label>Description:</label>
+                    <span><%=product.description%></span>
+                    <label>Price:</label>
+                    <span><%=product.price%></span>
+                </div>
+                <%} %>
+        </div>
+        <%- include('layout/footer.ejs')%>
