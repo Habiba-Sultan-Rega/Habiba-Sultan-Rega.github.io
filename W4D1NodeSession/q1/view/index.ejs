@@ -1,0 +1,22 @@
+<%- include('header.ejs')%>
+    <table border="1">
+        <tr>
+            <th>key</th>
+            <th>value</th>
+        </tr>
+        <%for(const c in cookies )
+        {%>
+            <tr>
+                <td> <%=c%> </td>
+                <td> <%=cookies[c]%> </td>               
+            </tr>
+            <%}%>
+    </table>
+    <form action="/addCookie" method="post">
+       <lable for="key"> Key : </lable>
+                <input type="text" name="key" /> 
+        <lable for="vlaue">Value: </lable>
+            <input type="text" name="value" />
+        <input type="submit" />
+    </form>
+<%- include('footer.ejs')%>

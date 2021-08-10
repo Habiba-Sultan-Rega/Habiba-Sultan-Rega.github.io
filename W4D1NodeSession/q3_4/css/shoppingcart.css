@@ -1,0 +1,15 @@
+#container {
+    width: 250px;
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 20px;
+    row-gap: 10px;
+}
+
+#list-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
