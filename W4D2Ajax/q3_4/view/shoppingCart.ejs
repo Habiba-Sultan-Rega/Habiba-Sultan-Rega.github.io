@@ -1,0 +1,30 @@
+<%- include('layout/header') %>
+<script src="/js/index.js"></script>
+    </head>
+    <body>
+        <div id="list-container">
+            <% for(const k in products){%>
+                <div id="container">
+                    <div>
+                        <label for ="name">Name : </label>
+                        <%=products[k].name%>
+                    </div>
+                    <div>
+                        <label for="price">Price : </label>
+                        <%=products[k].price%>
+                    </div>
+                    <div>
+                        <label for="quantity">Quantity:</label>
+                        <%=products[k].quantity%>
+                    </div>
+                    <div>
+                        <label for="Description">Description : </label>
+                        <%=products[k].description%>
+                    </div>
+                    <div>
+                        <a href="/">click here to back to cart</a>
+                    </div>
+                </div>
+                <%}%>
+        </div>
+        <%- include('layout/footer.ejs')%>
